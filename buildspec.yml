@@ -8,7 +8,7 @@ phases:
        
       # ECR Login
       - docker login -u wittyparrot -p welcome
-      - ECR_MAIN_URI="589089863541.dkr.ecr.us-west-2.amazonaws.com/2tierbackend"
+      - ECR_MAIN_URI="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
       - aws ecr get-login-password --region ${AWS_REGION} | docker login -u AWS --password-stdin ${ECR_MAIN_URI}
 
       - ECR_IMAGE_URI="${ECR_MAIN_URI}/${ECR_REPO_NAME}:latest"
