@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    ECR_REPO_NAME: 2tierbackend
+    ECR_REPO_NAME: applicationtier
 phases:
   pre_build:
     commands:
@@ -14,15 +14,15 @@ phases:
       - ECR_IMAGE_URI="${ECR_MAIN_URI}/${ECR_REPO_NAME}:latest"
   build:
     commands:
-      - docker build -t 2tierbackend .
+      - docker build -t applicationtier .
   post_build:
     commands:
-      - docker tag 2tierbackend:latest ${ECR_IMAGE_URI}
+      - docker tag applicationtier:latest ${ECR_IMAGE_URI}
       - docker push ${ECR_IMAGE_URI}
 
      
      # Generate image definitions file for ECS
-      - printf '[{"name":"2tierbackend","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
+      - printf '[{"name":"applicationtier","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
 
 artifacts:
   files:
