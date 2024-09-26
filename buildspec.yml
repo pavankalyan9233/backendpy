@@ -22,7 +22,7 @@ phases:
 
      
      # Generate image definitions file for ECS
-      - printf '[{"name":"applicationtier:latest","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
+      - printf '[{"name":"applicationtier","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
 
 artifacts:
   files:
