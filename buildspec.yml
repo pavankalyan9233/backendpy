@@ -14,7 +14,7 @@ phases:
       - ECR_IMAGE_URI="${ECR_MAIN_URI}/${ECR_REPO_NAME}:latest"
   build:
     commands:
-      - docker build -t applicationtier:latest .
+      - docker build -t applicationtier .
   post_build:
     commands:
       - docker tag applicationtier:latest ${ECR_IMAGE_URI}
