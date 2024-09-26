@@ -17,7 +17,7 @@ phases:
       - docker build -t applicationtier .
   post_build:
     commands:
-      - docker tag applicationtier:latest ${ECR_IMAGE_URI}
+      - docker tag applicationtier ${ECR_IMAGE_URI}
       - docker push ${ECR_IMAGE_URI}
 
      
