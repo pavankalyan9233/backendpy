@@ -14,15 +14,15 @@ phases:
       - ECR_IMAGE_URI="${ECR_MAIN_URI}/${ECR_REPO_NAME}:latest"
   build:
     commands:
-      - docker build -t applicationtier .
+      - docker build -t applicationtier:latest .
   post_build:
     commands:
-      - docker tag applicationtier ${ECR_IMAGE_URI}
+      - docker tag applicationtier:latest ${ECR_IMAGE_URI}
       - docker push ${ECR_IMAGE_URI}
 
      
      # Generate image definitions file for ECS
-      - printf '[{"name":"applicationtier","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
+      - printf '[{"name":"applicationtier:latest","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
 
 artifacts:
   files:
